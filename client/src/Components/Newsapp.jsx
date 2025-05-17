@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-
+const BACKEND_URL = 'https://newsy-hu8f.onrender.com';
 const Newsapp = () => {
   const [search, setSearch] = useState("india");
   const [inputText, setInputText] = useState("india");
@@ -10,7 +10,7 @@ const Newsapp = () => {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3001/news?q=${search}`);
+      const response = await fetch(`${BACKEND_URL}/news?q=${search}`);
       const jsonData = await response.json();
       const dt = jsonData.articles?.slice(0, 10) || [];
       setNewsData(dt);
